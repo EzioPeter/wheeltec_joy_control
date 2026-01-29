@@ -12,7 +12,6 @@ public:
     wheeltec_joy();
 private:
     void callback(const sensor_msgs::Joy::ConstPtr& Joy); 
-    //实例化节点
     ros::NodeHandle n; 
     ros::Subscriber sub ;
     ros::Publisher pub ;
@@ -20,12 +19,12 @@ private:
 
 wheeltec_joy::wheeltec_joy() 
 {
-    ros::NodeHandle private_nh("~"); //创建节点句柄
-    pub = n.advertise<geometry_msgs::PoseStamped>("imagine_pose",1);//将速度发给机器人底盘节点
-    sub = n.subscribe<sensor_msgs::Joy>("joy",10,&wheeltec_joy::callback,this); //订阅手柄发来的数据
+    ros::NodeHandle private_nh("~");
+    pub = n.advertise<geometry_msgs::PoseStamped>("imagine_pose",1);
+    sub = n.subscribe<sensor_msgs::Joy>("joy",10,&wheeltec_joy::callback,this);
 } 
 
-void wheeltec_joy::callback(const sensor_msgs::Joy::ConstPtr& Joy) //键值回调函数
+void wheeltec_joy::callback(const sensor_msgs::Joy::ConstPtr& Joy)
 {
     double up_down_key,left_right_key;
     double degrees = 45.0;
