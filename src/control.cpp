@@ -20,7 +20,7 @@ private:
 wheeltec_joy::wheeltec_joy() 
 {
     ros::NodeHandle private_nh("~");
-    pub = n.advertise<geometry_msgs::PoseStamped>("imagine_pose",1);
+    pub = n.advertise<geometry_msgs::PoseStamped>("imagine_cmd",1);
     sub = n.subscribe<sensor_msgs::Joy>("joy",10,&wheeltec_joy::callback,this);
 } 
 
